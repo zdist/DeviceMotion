@@ -7,4 +7,4 @@ Op Art by Bridget Riley comes to life on mobile devices with Device Motion.
 ### Device Motion in ...motion: 
 <i>How to:</i> Have the screen of your mobile device face the ceiling - or the sky - then carefully turn the screen to the left about 45˚ (perhaps facing a wall) and then, do the same but to the right, keeping the charging port facing your body at all times.
 
-<img src="https://media.giphy.com/media/X3fObwQG38spooLjYF/giphy.gif" width="25%"/> 
+<img src="https://media.giphy.com/media/X3fObwQG38spooLjYF/giphy.gif" width="25%"/><img src="https://dev.opera.com/articles/w3c-device-orientation-api/device-gamma.png" width="50%"/>

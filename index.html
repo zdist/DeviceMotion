@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Op Art - 2.0</title>
+    </head>
+    <style>
+        body {
+            background-color: #F0EAD6; 
+            margin: 0px;
+        }
+    </style>
+    <body>
+    <button id="permissAquired" onclick="grantPermission()">Request permission</button>
+    <p id="permission"></p>
+    <canvas id="canvas"></canvas>
+    <script>
+        // Motion Code Ahead!
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        // if (typeof DeviceMotionEvent.requestPermission === 'function') {
+        //         // Handle iOS 13+ devices.
+        //         DeviceMotionEvent.requestPermission()
+        //         .then((state) => {
+        //             if (state === 'granted') {
+        //             window.addEventListener('devicemotion', handleMotionEvent, false);
+        //             document.getElementById("permission").innerHTML = "Device Motion Event is supported on your device.";
+        //             } else {
+        //             console.error('Request to access the orientation was rejected');
+        //             document.getElementById("permission").innerHTML = "Device Motion Event is NOT supported on your device.";
+        //             }
+        //         })
+        //         .catch(console.error);
+        //     } else {
+        //         // Handle regular non iOS 13+ devices.
+        //         window.addEventListener('devicemotion', handleMotionEvent);
+        //     }
+
+        // ----------------------------------------------------
+        // https://leemartin.dev/how-to-request-device-motion-and-orientation-permission-in-ios-13-74fc9d6cd140
+        function grantPermission() {
+            if (typeof DeviceMotionEvent.requestPermission === 'function') {
+                // iOS 13+
+                DeviceMotionEvent.requestPermission().then(response => {
+                    if (response == 'granted') {
+                        window.addEventListener('devicemotion', (e) => {
+                            // do something with e
+                            document.getElementById("permission").innerHTML = "Device Motion Event is supported on your device.";
+                        })
+                    }
+                }).catch(console.error) 
+            } else {
+                // non iOS 13+
+                document.getElementById("permission").innerHTML = "Device Motion Event is NOT supported on your device.";
+            }
+        // } <---- Want to find the end of this? Go to line 115
+        // ----------------------------------------------------
+        // function grantPermission() {
+        //     if (window.DeviceMotionEvent.requestPermission()) {
+        //         document.getElementById("permission").innerHTML = "Device Motion Event is supported on your device.";
+        //     }
+        //     if (window.DeviceMotionEvent) {
+        //         // if true, go to permissionGranted... if false... (go to like 29)
+        //         window.addEventListener("permission", permissionGranted, false);
+        //     } else {
+        //         document.getElementById("permission").innerHTML = "Device Motion Event is NOT supported on your device.";
+        //     }
+        // }
+        /* Make Circles Move a Little w/ Permissions and such... */
+        //function permissionGranted() {
+            window.addEventListener('devicemotion', function(event) {
+                var acceleration = event.accelerationIncludingGravity;
+                /* alpha = z-axis; beta = x-axis; gamma = y-axis; */
+                var acceleraRaw = "[" + Math.round(acceleration.x) + ", " + Math.round(acceleration.y) + ", " + Math.round(acceleration.z) + "]";
+                var faceUp = -1;
+                if (acceleration.z > 0) {
+                    faceUp = +1;
+                }
+                var gamma = Math.round(((acceleration.x) / 9.81) * -90); // Left Right Movement
+                var beta = Math.round(((acceleration.y + 9.81) / 9.81) * 90 * faceUp); // Up Down Movement
+
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+
+                const circles = 35;
+                const numLines = 20;
+                const lines = 40; 
+                var zDeg = 0;  // Had to rename x, y & z ... :(
+                var xDeg = canvas.width / 2;
+                var yDeg = canvas.height / 2;
+                var length = 10; 
+                var width = 3;
+                for (var n = 0; n <= circles; n++) {
+                    for (var i = 0; i <= lines; i++) {
+                        ctx.fillRect(xDeg + zDeg, yDeg + zDeg, length, width);
+                        ctx.translate(xDeg, yDeg);
+                        ctx.rotate(Math.PI / numLines);
+                        ctx.translate(-xDeg, -yDeg);
+                        ctx.fillRect(xDeg + zDeg, yDeg + zDeg, length, width);
+                        yDeg = yDeg + 1;
+                        if (i % 2 == 0) {
+                            ctx.fillStyle = "black";
+                            ctx.fill();
+                        } else { 
+                            ctx.fillStyle = "#F0EAD6"; 
+                            ctx.fill();
+                        }
+                    }
+                    length = length + beta;
+                    width = width + 0.25;
+                    zDeg = zDeg + gamma;
+                }
+            }, false);
+        }
+    </script>
+  </body>
+</html>

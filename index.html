@@ -7,37 +7,21 @@
     </head>
     <style>
         body {
-            background-color: #F0EAD6; 
-            margin: 0px;
+            background-color: #F0EAD6; /* Off White color */
+            margin: 0px; /* Fill the Screen */
         }
     </style>
     <body>
-    <button id="permissAquired" onclick="grantPermission()">Request permission</button>
-    <p id="permission"></p>
-    <canvas id="canvas"></canvas>
+        <!-- Always ask permission to take control of one's mobile device :) -->
+        <button id="permissAquired" onclick="grantPermission()">Request permission</button>
+        <p id="permission"></p>
+        <canvas id="canvas"></canvas>
     <script>
         // Motion Code Ahead!
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
-        // if (typeof DeviceMotionEvent.requestPermission === 'function') {
-        //         // Handle iOS 13+ devices.
-        //         DeviceMotionEvent.requestPermission()
-        //         .then((state) => {
-        //             if (state === 'granted') {
-        //             window.addEventListener('devicemotion', handleMotionEvent, false);
-        //             document.getElementById("permission").innerHTML = "Device Motion Event is supported on your device.";
-        //             } else {
-        //             console.error('Request to access the orientation was rejected');
-        //             document.getElementById("permission").innerHTML = "Device Motion Event is NOT supported on your device.";
-        //             }
-        //         })
-        //         .catch(console.error);
-        //     } else {
-        //         // Handle regular non iOS 13+ devices.
-        //         window.addEventListener('devicemotion', handleMotionEvent);
-        //     }
-
         // ----------------------------------------------------
+        // Properly obtaining permission code - From: 
         // https://leemartin.dev/how-to-request-device-motion-and-orientation-permission-in-ios-13-74fc9d6cd140
         function grantPermission() {
             if (typeof DeviceMotionEvent.requestPermission === 'function') {
@@ -54,21 +38,8 @@
                 // non iOS 13+
                 document.getElementById("permission").innerHTML = "Device Motion Event is NOT supported on your device.";
             }
-        // } <---- Want to find the end of this? Go to line 115
+        // } <---- Want to find the end of this? Go to line 84
         // ----------------------------------------------------
-        // function grantPermission() {
-        //     if (window.DeviceMotionEvent.requestPermission()) {
-        //         document.getElementById("permission").innerHTML = "Device Motion Event is supported on your device.";
-        //     }
-        //     if (window.DeviceMotionEvent) {
-        //         // if true, go to permissionGranted... if false... (go to like 29)
-        //         window.addEventListener("permission", permissionGranted, false);
-        //     } else {
-        //         document.getElementById("permission").innerHTML = "Device Motion Event is NOT supported on your device.";
-        //     }
-        // }
-        /* Make Circles Move a Little w/ Permissions and such... */
-        //function permissionGranted() {
             window.addEventListener('devicemotion', function(event) {
                 var acceleration = event.accelerationIncludingGravity;
                 /* alpha = z-axis; beta = x-axis; gamma = y-axis; */
@@ -77,42 +48,42 @@
                 if (acceleration.z > 0) {
                     faceUp = +1;
                 }
-                var gamma = Math.round(((acceleration.x) / 9.81) * -90); // Left Right Movement
+                var gamma = Math.round(((acceleration.x) / 9.81) * - 90); // Left Right Movement
                 var beta = Math.round(((acceleration.y + 9.81) / 9.81) * 90 * faceUp); // Up Down Movement
 
                 canvas.width = window.innerWidth;
                 canvas.height = window.innerHeight;
 
-                const circles = 35;
-                const numLines = 20;
-                const lines = 40; 
+                const circles = 35; // number of circles
+                const numLines = 20; 
+                const lines = 40; // number of lines in each circle
                 var zDeg = 0;  // Had to rename x, y & z ... :(
                 var xDeg = canvas.width / 2;
                 var yDeg = canvas.height / 2;
-                var length = 10; 
-                var width = 3;
-                for (var n = 0; n <= circles; n++) {
-                    for (var i = 0; i <= lines; i++) {
+                var length = 10; // length of lines
+                var width = 3; // width of lines
+                for (var n = 0; n <= circles; n++) { // repeat this for loop circles num of times (in this case: 35)
+                    for (var i = 0; i <= lines; i++) { // repeat this for loop lines number of times (in this case: 40)
                         ctx.fillRect(xDeg + zDeg, yDeg + zDeg, length, width);
                         ctx.translate(xDeg, yDeg);
-                        ctx.rotate(Math.PI / numLines);
+                        ctx.rotate(Math.PI / numLines); // rotating lines on their degree
                         ctx.translate(-xDeg, -yDeg);
                         ctx.fillRect(xDeg + zDeg, yDeg + zDeg, length, width);
                         yDeg = yDeg + 1;
-                        if (i % 2 == 0) {
+                        if (i % 2 == 0) { // if line is an even number make it black
                             ctx.fillStyle = "black";
                             ctx.fill();
-                        } else { 
+                        } else {  // if line is an odd number make it off white
                             ctx.fillStyle = "#F0EAD6"; 
                             ctx.fill();
                         }
-                    }
+                    } // increase the varibles below by a specific number after each iteration of the for loops
                     length = length + beta;
                     width = width + 0.25;
                     zDeg = zDeg + gamma;
                 }
             }, false);
-        }
+        } // <-- Here it is :)
     </script>
   </body>
 </html>

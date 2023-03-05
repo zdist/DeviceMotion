@@ -19,7 +19,7 @@
         <p id="permission"></p>
         <canvas id="canvas"></canvas>
     <script>
-        // Motion Code Ahead!
+        // Device Motion Code Ahead!
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
         // ----------------------------------------------------
@@ -40,7 +40,7 @@
                 // non iOS 13+
                 document.getElementById("permission").innerHTML = "Device Motion Event is NOT supported on your device.";
             }
-        // } <---- Want to find the end of this? Go to line 84
+        // } <---- Want to find the other end of this? Go to line 88
         // ----------------------------------------------------
             window.addEventListener('devicemotion', function(event) {
                 var acceleration = event.accelerationIncludingGravity;

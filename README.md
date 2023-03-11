@@ -1,5 +1,7 @@
 # Device Motion
-Op Art by Bridget Riley comes to life on mobile devices with Device Motion.
+Want to make art move/interactive? <i>Why not?</i>
+
+Optical Art by Bridget Riley practically comes to life on mobile devices with Device Motion!
 ### Browser Compatibility (<a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/devicemotion_event#browser_compatibility">MDN</a>):
 ![browserCompatibilityMDN](https://user-images.githubusercontent.com/70993217/224460875-d3707257-b66f-47d5-839a-44c1fc986044.png)
 

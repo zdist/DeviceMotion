@@ -37,11 +37,11 @@
                             document.getElementById("permission").innerHTML = "Device Motion Event is supported on your device.";
                             console.log("Device Motion Event is supported on your device.");
                         })
-                    } else {
-                        document.getElementById("permission").innerHTML = "Device Motion Event is supported on your device.";
-                        console.log("Device Motion Event is NOT supported on your device.");
-                    }
-                }).catch(console.log("Device Motion Event is NOT supported on your device.")); 
+                    } 
+                }).catch(() => {
+                    document.getElementById("permission").innerHTML = "Device Motion Event is NOT supported on your device. Try again on a mobile device.";
+                    console.log("Device Motion Event is NOT supported on your device.");
+                });
             } else {
                 // non iOS 13+
                 document.getElementById("permission").innerHTML = "Device Motion Event is NOT supported on your device.";

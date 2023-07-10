@@ -37,6 +37,9 @@
                             document.getElementById("permission").innerHTML = "Device Motion Event is supported on your device.";
                             console.log("Device Motion Event is supported on your device.");
                         })
+                    } else {
+                        document.getElementById("permission").innerHTML = "Device Motion Event is supported on your device.";
+                        console.log("Device Motion Event is NOT supported on your device.");
                     }
                 }).catch(console.log("Device Motion Event is NOT supported on your device.")); 
             } else {

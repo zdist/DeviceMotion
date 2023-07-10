@@ -28,23 +28,23 @@
         // Properly obtaining permission code - From: 
         // https://leemartin.dev/how-to-request-device-motion-and-orientation-permission-in-ios-13-74fc9d6cd140
         function grantPermission() {
-            if (typeof DeviceMotionEvent.requestPermission === 'function') {
+            if (typeof DeviceMotionEvent !== 'undefined' && typeof DeviceMotionEvent.requestPermission === 'function') {
                 // iOS 13+
                 DeviceMotionEvent.requestPermission().then(response => {
                     if (response == 'granted') {
                         window.addEventListener('devicemotion', (e) => {
                             // do something with e
-                            document.getElementById("permission").innerHTML = "Device Motion Event is supported on your device.";
+                            document.getElementById("permission").innerHTML = "Device Motion Event is supported on your device. Try again on a mobile device.";
                             console.log("Device Motion Event is supported on your device.");
                         })
-                    } 
+                    }
                 }).catch(() => {
                     document.getElementById("permission").innerHTML = "Device Motion Event is NOT supported on your device. Try again on a mobile device.";
                     console.log("Device Motion Event is NOT supported on your device.");
                 });
             } else {
-                // non iOS 13+
-                document.getElementById("permission").innerHTML = "Device Motion Event is NOT supported on your device.";
+                // non iOS 13+ or desktop browser
+                document.getElementById("permission").innerHTML = "Device Motion Event is NOT supported on your device. Try again on a mobile device.";
                 console.log("Device Motion Event is NOT supported on your device.");
             }
         // } <---- Want to find the other end of this? Go to line 88

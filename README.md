@@ -22,5 +22,5 @@ Optical Art by Bridget Riley practically comes to life on mobile devices with De
   <img src="https://media.giphy.com/media/X3fObwQG38spooLjYF/giphy.gif" width="25%"/><img src="https://developer.mozilla.org/en-US/docs/Web/API/Device_orientation_events/Orientation_and_motion_data_explained/gamma.png" width="50%"/>
 </div>
 <div align="center">
-  <strong>Note:</strong> The gif is from the first iteration of this project, however the functionality is the same.
+  <strong>Note:</strong> The gif is from the first iteration of this project with an old github account, however the functionality is the same.
 </div>

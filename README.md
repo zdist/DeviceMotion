@@ -12,7 +12,7 @@ Optical Art by Bridget Riley practically comes to life on mobile devices with De
 ### Original Image vs. My Interpretation:
 
 <div align="center">
-  <img align="center" src="https://d7hftxdivxxvm.cloudfront.net/?resize_to=fit&width=800&height=796&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FRkVf05cQRyyK5nWo5s8z1w%2Flarge.jpg" width="40%"/> <img align="center" src="https://webpage.pace.edu/zd79703n/homework/hw4/pic1.png" width="48%"/> 
+  <img align="center" src="https://d7hftxdivxxvm.cloudfront.net/?resize_to=fit&width=800&height=796&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FRkVf05cQRyyK5nWo5s8z1w%2Flarge.jpg" width="40%"/> <img align="center" src="https://github.com/user-attachments/assets/62c4591d-c8a3-4432-b80b-0b379713d324" width="32.5%"/> 
 </div>
 
 ### Device Motion in ...motion: 
@@ -20,4 +20,7 @@ Optical Art by Bridget Riley practically comes to life on mobile devices with De
 
 <div align="center">
   <img src="https://media.giphy.com/media/X3fObwQG38spooLjYF/giphy.gif" width="25%"/><img src="https://developer.mozilla.org/en-US/docs/Web/API/Device_orientation_events/Orientation_and_motion_data_explained/gamma.png" width="50%"/>
+</div>
+<div align="center">
+  <strong>Note:</strong> The gif is from the first iteration of this project, however the functionality is the same.
 </div>

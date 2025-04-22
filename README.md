@@ -20,5 +20,4 @@ Optical Art by Bridget Riley practically comes to life on mobile devices with De
 
 <div align="center">
   <img src="https://media.giphy.com/media/X3fObwQG38spooLjYF/giphy.gif" width="25%"/><img src="https://developer.mozilla.org/en-US/docs/Web/API/Device_orientation_events/Orientation_and_motion_data_explained/gamma.png" width="50%"/>
-  <img src="https://media.giphy.com/media/X3fObwQG38spooLjYF/giphy.gif" width="25%"/><img src="" width="50%"/>
 </div>
